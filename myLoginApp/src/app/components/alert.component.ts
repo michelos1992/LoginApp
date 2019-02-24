@@ -3,12 +3,12 @@ import { Subscription } from 'rxjs';
 import { AlertService } from '../services/alert.service';
 
 @Component({
-  selector: 'app-components',
-  templateUrl: './components.component.html',
-  styleUrls: ['./components.component.css']
+  selector: 'app-alert',
+  templateUrl: './alert.component.html',
+  styleUrls: ['./alert.component.css']
 })
 
-export class ComponentsComponent implements OnInit, OnDestroy {
+export class AlertComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   message: any;
 
