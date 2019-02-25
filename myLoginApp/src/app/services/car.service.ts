@@ -38,11 +38,17 @@ export class CarService {
   //   );
   // }
 
-  addCar(car): Observable<Car> {
-    return this.http.post<Car>(this.carsUrl, car, httpOptions).pipe(
-      catchError(this.handleError<Car>('addCar'))
-    );
+  AddCar(car) {
+      let body = car;
+      return this.http.post(this.carsUrl, body, httpOptions).pipe(
+              catchError(this.handleError<Car>('addCar')));
   }
+
+  // AddCar(car): Observable<Car> {
+  //   return this.http.post<Car>(this.carsUrl, car, httpOptions).pipe(
+  //     catchError(this.handleError<Car>('addCar'))
+  //   );
+  // }
 
   // deleteCar(car: Car | number): Observable<Car> {
   //   const id = typeof car === 'number' ? car : car.id;

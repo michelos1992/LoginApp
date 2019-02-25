@@ -10,6 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class CarsComponent implements OnInit {
 
   cars: Car[];
+  pageTitle: string = 'Car List';
+  addCar = false;
+  newCar: Car = new Car();
+  id: number;
+  vehicleBrand: string;
+  model: string;
+  year: number;
+  power: number;
+  enginCapacity: number;
+  edit: boolean = false;
 
   constructor(private carService: CarService) { }
 
@@ -22,12 +32,28 @@ export class CarsComponent implements OnInit {
     .subscribe(cars => this.cars = cars);
   }
 
-  add(car: Car): void {
-    this.carService.addCar( car )
-      .subscribe(carr => {
-        this.cars.push(car);
-      });
+  AddCar(): void {
+    this.addCar = true;
   }
+
+  SaveData(): void{
+    this.newCar.id = this.id;
+    this.newCar.vehicleBrand = this.vehicleBrand;
+    this.newCar.model = this.model;
+    this.newCar.year = this.year;
+    this.newCar.power = this.power;
+    this.newCar.enginCapacity = this.enginCapacity;
+    this.addCar = false;
+    console.log(this.newCar);
+    this.carService.AddCar(this.newCar).subscribe(success => {
+           // refresh the list
+       this.getCars();
+            return true;
+         },
+         error => {
+           console.error("Error saving Car!"+ error.Message);
+         });
+    }
 
   // delete(car: Car): void {
   //   this.cars = this.cars.filter(h => h !== car);

@@ -5,22 +5,35 @@
       <a routerLink="/addCar">Add new Car</a>
   </nav>
 </div>
-
-<table border=1>
-  <tr>
-    <th>Id</th>
-    <th>vehicleBrand</th>
-    <th>model</th>
-    <th>year</th>
-    <th>power</th>
-    <th>enginCapacity</th>
-  </tr>
-  <tr *ngFor="let car of cars">
-    <td>{{car.id}}</td>
-    <td>{{car.vehicleBrand}}</td>
-    <td>{{car.model}}</td>
-    <td>{{car.year}}</td>
-    <td>{{car.power}}</td>
-    <td>{{car.enginCapacity}}</td>
-  </tr>
-</table>
+<div><h2>{{pageTitle}}</h2></div>
+<div>
+  <table *ngIf='cars' border="1" style="border:solid 1px black" >
+    <tr>
+      <th>Id</th>
+      <th>vehicleBrand</th>
+      <th>model</th>
+      <th>year</th>
+      <th>power</th>
+      <th>enginCapacity</th>
+    </tr>
+    <tr *ngFor="let car of cars">
+      <td>{{car.id}}</td>
+      <td>{{car.vehicleBrand}}</td>
+      <td>{{car.model}}</td>
+      <td>{{car.year}}</td>
+      <td>{{car.power}}</td>
+      <td>{{car.enginCapacity}}</td>
+    </tr>
+    <tr *ngIf='addCar' style="border:solid 1px black">
+        <td><input type="text" [(ngModel)]="id" /></td>
+        <td><input type="text" [(ngModel)]="vehicleBrand" /></td>
+        <td><input type="text" [(ngModel)]="model"/></td>
+        <td><input type="text" [(ngModel)]="year"/></td>
+        <td><input type="text" [(ngModel)]="power"/></td>
+        <td><input type="text" [(ngModel)]="enginCapacity"/></td>
+        <td><input type="button" (click)="SaveData()" value="Save"/></td>
+        <td><input type="button" (click)="Cancel()" value="Cancel" /></td>
+    </tr>
+  </table>
+  <input (click)="AddCar()" type="button" value="Add" />
+</div>

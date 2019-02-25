@@ -4,7 +4,7 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -17,7 +17,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { routing } from './app.routing';
 import { CarsComponent } from './components/cars/cars.component';
-import { AddCarComponent } from './components/add-car/add-car.component';
 
 
 @NgModule({
@@ -27,12 +26,12 @@ import { AddCarComponent } from './components/add-car/add-car.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    CarsComponent,
-    AddCarComponent
+    CarsComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
