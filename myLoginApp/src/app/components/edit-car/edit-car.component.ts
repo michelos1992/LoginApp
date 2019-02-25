@@ -29,7 +29,6 @@ export class EditCarComponent implements OnInit {
 
 SaveEdit(): void {
   this.carService.updateCar(this.car).subscribe(success => {
-          // refresh the list
     this.success = true;
         });
 }

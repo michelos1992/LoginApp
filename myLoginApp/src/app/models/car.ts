@@ -5,4 +5,5 @@ export class Car {
   year: number;
   power: number;
   enginCapacity: number;
+  constructor() {}
 }

@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { EditCarComponent } from './components/edit-car/edit-car.component';
 import { AlertComponent } from './components/alert.component';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
@@ -39,7 +40,8 @@ import { RouterModule } from '@angular/router';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
-    routing
+    routing,
+    HttpModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

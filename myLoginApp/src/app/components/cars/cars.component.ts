@@ -1,6 +1,7 @@
 import { Car } from '../../models/car';
 import { CarService } from './../../services/car.service';
 import { Component, OnInit } from '@angular/core';
+import { Http, Response, Headers} from '@angular/http';
 
 @Component({
   selector: 'app-cars',
@@ -10,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class CarsComponent implements OnInit {
 
   cars: Car[];
-  pageTitle: string = 'Car List';
+  pageTitle = 'Car List';
   addCar = false;
   newCar: Car = new Car();
   id: number;
@@ -19,7 +20,7 @@ export class CarsComponent implements OnInit {
   year: number;
   power: number;
   enginCapacity: number;
-  edit: boolean = false;
+  edit = false;
 
   constructor(private carService: CarService) { }
 
@@ -27,10 +28,10 @@ export class CarsComponent implements OnInit {
     this.getCars();
   }
 
-  getCars(): void {
+  getCars = function() {
     this.carService.getCars()
     .subscribe(cars => this.cars = cars);
-  }
+  };
 
   AddCar(): void {
     this.addCar = true;
@@ -48,15 +49,15 @@ export class CarsComponent implements OnInit {
     this.carService.AddCar(this.newCar).subscribe(success => {
            // refresh the list
        this.getCars();
-            return true;
+       return true;
          },
          error => {
-           console.error("Error saving Car!"+ error.Message);
+           console.error('Error saving Car!'+ error.Message);
          });
     }
 
     DeleteCar(car): void {
-      if (confirm("Are you sure you want to delete " + car.vehicleBrand + "?")) {
+      if (confirm('Are you sure you want to delete ' + car.vehicleBrand + '?')) {
         this.carService.DeleteCar(car.id).subscribe(
            data => {
              // refresh the list
@@ -64,7 +65,7 @@ export class CarsComponent implements OnInit {
              return true;
            },
            error => {
-             console.error("Error deleting Employee!");
+             console.error('Error deleting Employee!');
            }
         );
       }

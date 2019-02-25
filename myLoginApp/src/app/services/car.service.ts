@@ -14,7 +14,7 @@ const httpOptions = {
 
 export class CarService {
 
-  private carsUrl = 'api/cars'; //'http://localhost:3004/car';
+  private carsUrl = 'api/cars';
 
   constructor(
     private http: HttpClient) { }
@@ -22,14 +22,6 @@ export class CarService {
   getCars(): Observable<Car[]> {
     return this.http.get<Car[]>(this.carsUrl);
   }
-
-  // getCarNo404<Data>(id: number): Observable<Car> {
-  //   const url = `${this.carsUrl}/?id=${id}`;
-  //   return this.http.get<Car[]>(url)
-  //     .pipe(
-  //       map(cars => cars[0])
-  //     );
-  // }
 
   getCar(id: number): Observable<Car> {
     const url = `${this.carsUrl}/${id}`;
