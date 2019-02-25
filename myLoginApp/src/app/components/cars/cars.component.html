@@ -1,0 +1,26 @@
+<h2>My Cars</h2>
+
+<div>
+  <nav>
+      <a routerLink="/addCar">Add new Car</a>
+  </nav>
+</div>
+
+<table border=1>
+  <tr>
+    <th>Id</th>
+    <th>vehicleBrand</th>
+    <th>model</th>
+    <th>year</th>
+    <th>power</th>
+    <th>enginCapacity</th>
+  </tr>
+  <tr *ngFor="let car of cars">
+    <td>{{car.id}}</td>
+    <td>{{car.vehicleBrand}}</td>
+    <td>{{car.model}}</td>
+    <td>{{car.year}}</td>
+    <td>{{car.power}}</td>
+    <td>{{car.enginCapacity}}</td>
+  </tr>
+</table>

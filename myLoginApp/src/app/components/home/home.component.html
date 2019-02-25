@@ -1,5 +1,9 @@
-<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 7!!</p>
+<h1>My home page</h1>
+
+<nav>
+  <a routerLink="/cars">My Cars List</a>
+</nav>
+
 <h3>All registered users:</h3>
 <ul>
     <li *ngFor="let user of users">
