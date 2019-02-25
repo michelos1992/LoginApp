@@ -18,6 +18,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { routing } from './app.routing';
 import { CarsComponent } from './components/cars/cars.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({

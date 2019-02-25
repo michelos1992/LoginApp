@@ -14,7 +14,7 @@ const httpOptions = {
 
 export class CarService {
 
-  private carsUrl = 'api/cars';
+  private carsUrl = 'api/cars'; //'http://localhost:3004/car';
 
   constructor(
     private http: HttpClient) { }
@@ -34,7 +34,7 @@ export class CarService {
   getCar(id: number): Observable<Car> {
     const url = `${this.carsUrl}/${id}`;
     return this.http.get<Car>(url).pipe(
-      catchError(this.handleError<Car>(`getCar id=${id}`))
+            catchError(this.handleError<Car>(`getCar id=${id}`))
     );
   }
 
@@ -47,13 +47,13 @@ export class CarService {
   DeleteCar(id) {
     const url = `${this.carsUrl}/${id}`;
     return this.http.delete(url, httpOptions).pipe(
-      catchError(this.handleError<Car>('DeleteCar'))
+            catchError(this.handleError<Car>('DeleteCar'))
     );
    }
 
   updateCar(car: Car): Observable<any> {
     return this.http.put(this.carsUrl, car, httpOptions).pipe(
-      catchError(this.handleError<any>('updateCar'))
+            catchError(this.handleError<any>('updateCar'))
     );
   }
 

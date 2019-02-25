@@ -70,10 +70,6 @@ export class CarsComponent implements OnInit {
       }
     }
 
-  // delete(car: Car): void {
-  //   this.cars = this.cars.filter(h => h !== car);
-  //   this.carService.deleteCar(car).subscribe();
-  // }
   Cancel(): void {
     this.addCar = false;
   }
