@@ -1,3 +1,4 @@
+import { EditCarComponent } from './components/edit-car/edit-car.component';
 import { AlertComponent } from './components/alert.component';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
@@ -26,7 +27,8 @@ import { CarsComponent } from './components/cars/cars.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    CarsComponent
+    CarsComponent,
+    EditCarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,5 @@
 <h2>My Cars</h2>
 
-<div>
-  <nav>
-      <a routerLink="/addCar">Add new Car</a>
-  </nav>
-</div>
 <div><h2>{{pageTitle}}</h2></div>
 <div>
   <table *ngIf='cars' border="1" style="border:solid 1px black" >
@@ -15,6 +10,7 @@
       <th>year</th>
       <th>power</th>
       <th>enginCapacity</th>
+      <th>action</th>
     </tr>
     <tr *ngFor="let car of cars">
       <td>{{car.id}}</td>
@@ -23,6 +19,10 @@
       <td>{{car.year}}</td>
       <td>{{car.power}}</td>
       <td>{{car.enginCapacity}}</td>
+      <td>
+        <a [routerLink]="['/editCars/',car.id]">Edit</a> |
+        <button (click)="DeleteCar(car)">Delete</button>
+      </td>
     </tr>
     <tr *ngIf='addCar' style="border:solid 1px black">
         <td><input type="text" [(ngModel)]="id" /></td>

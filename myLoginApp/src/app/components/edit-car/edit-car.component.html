@@ -1,0 +1,34 @@
+<div *ngIf="car && !success">
+    <table>
+        <tr>
+          <td>Id:</td>
+          <td><label>{{car.id}}</label></td>
+        </tr>
+        <tr>
+          <td>Vehicle brand:</td>
+          <td><input type="text" [(ngModel)]="car.vehicleBrand"/></td>
+        </tr>
+        <tr>
+          <td>Model:</td>
+          <td><input type="text" [(ngModel)]="car.model" /></td>
+        </tr>
+        <tr>
+          <td>Year:</td>
+          <td><input type="text" [(ngModel)]="car.year" /></td>
+        </tr>
+        <tr>
+          <td>Power:</td>
+          <td><input type="text" [(ngModel)]="car.power" /></td>
+        </tr>
+        <tr>
+          <td>Engin capacity:</td>
+          <td><input type="text" [(ngModel)]="car.enginCapacity" /></td>
+        </tr>
+    </table>
+    <button (click)="SaveEdit()">Save</button>
+    <button  [routerLink]="['/cars']">Cancel</button>
+</div>
+<div *ngIf="success">
+    <h2>Edited Successfully</h2>
+    <button [routerLink]="['/cars']">Back</button>
+</div>

@@ -36,7 +36,7 @@ export class CarsComponent implements OnInit {
     this.addCar = true;
   }
 
-  SaveData(): void{
+  SaveData(): void {
     this.newCar.id = this.id;
     this.newCar.vehicleBrand = this.vehicleBrand;
     this.newCar.model = this.model;
@@ -55,8 +55,26 @@ export class CarsComponent implements OnInit {
          });
     }
 
+    DeleteCar(car): void {
+      if (confirm("Are you sure you want to delete " + car.vehicleBrand + "?")) {
+        this.carService.DeleteCar(car.id).subscribe(
+           data => {
+             // refresh the list
+             this.getCars();
+             return true;
+           },
+           error => {
+             console.error("Error deleting Employee!");
+           }
+        );
+      }
+    }
+
   // delete(car: Car): void {
   //   this.cars = this.cars.filter(h => h !== car);
   //   this.carService.deleteCar(car).subscribe();
   // }
+  Cancel(): void {
+    this.addCar = false;
+  }
 }

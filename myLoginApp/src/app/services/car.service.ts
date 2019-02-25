@@ -31,12 +31,12 @@ export class CarService {
   //     );
   // }
 
-  // getCar(id: number): Observable<Car> {
-  //   const url = `${this.carsUrl}/${id}`;
-  //   return this.http.get<Car>(url).pipe(
-  //     catchError(this.handleError<Car>(`getCar id=${id}`))
-  //   );
-  // }
+  getCar(id: number): Observable<Car> {
+    const url = `${this.carsUrl}/${id}`;
+    return this.http.get<Car>(url).pipe(
+      catchError(this.handleError<Car>(`getCar id=${id}`))
+    );
+  }
 
   AddCar(car) {
       let body = car;
@@ -44,26 +44,18 @@ export class CarService {
               catchError(this.handleError<Car>('addCar')));
   }
 
-  // AddCar(car): Observable<Car> {
-  //   return this.http.post<Car>(this.carsUrl, car, httpOptions).pipe(
-  //     catchError(this.handleError<Car>('addCar'))
-  //   );
-  // }
+  DeleteCar(id) {
+    const url = `${this.carsUrl}/${id}`;
+    return this.http.delete(url, httpOptions).pipe(
+      catchError(this.handleError<Car>('DeleteCar'))
+    );
+   }
 
-  // deleteCar(car: Car | number): Observable<Car> {
-  //   const id = typeof car === 'number' ? car : car.id;
-  //   const url = `${this.carsUrl}/${id}`;
-
-  //   return this.http.delete<Car>(url, httpOptions).pipe(
-  //     catchError(this.handleError<Car>('deleteCar'))
-  //   );
-  // }
-
-  // updateCar(car: Car): Observable<any> {
-  //   return this.http.put(this.carsUrl, car, httpOptions).pipe(
-  //     catchError(this.handleError<any>('updateCar'))
-  //   );
-  // }
+  updateCar(car: Car): Observable<any> {
+    return this.http.put(this.carsUrl, car, httpOptions).pipe(
+      catchError(this.handleError<any>('updateCar'))
+    );
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
